@@ -8,7 +8,10 @@
         }
     </style>
 
-    {{ $title := .Title | default .Site.Title }}
+    {{ $title := print .Site.Title }}
+    {{ if .Title }}
+        {{ $title = print .Site.Title " - " .Title }}
+    {{ end }}
     {{ $description := .Description | default .Site.Params.Description }}
     {{ $image := .Params.image | default .Site.Params.AvatarURL }}
     {{ $siteKeywords := .Site.Params.MetaKeywords | default (slice) }}
